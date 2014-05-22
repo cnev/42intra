@@ -52,14 +52,12 @@ class Install_model extends CI_Model
 				die("Connexion LDAP echouee...");
 		}
 		$dn = "ou=2013,ou=people,dc=42,dc=fr";
-		//$person = "Clement";
 		$filter="(&(first-name=*)(!(close=non*)))";
 		$justthese = array("first-name", "last-name", "uid", "birth-date", "picture", "mobile-phone");
 		$sr = ldap_search($ldapconn, $dn, $filter, $justthese);
 		$info = ldap_get_entries($ldapconn, $sr);
 		for ($i=0; $i<$info["count"]; $i++)
 		{
-			//echo '<div>'.$info[$i]["first-name"][0].' '.$info[$i]["last-name"][0].'</div>';
 			if (isset($info[$i]["last-name"]) && isset($info[$i]["first-name"]) && isset($info[$i]["uid"])
 				&& isset($info[$i]["birth-date"]) && isset($info[$i]["mobile-phone"]))
 			{
