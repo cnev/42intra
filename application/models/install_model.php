@@ -5,6 +5,7 @@ class Install_model extends CI_Model
 	public function __construct()
 	{
 		parent::__construct();
+		$this->create_db();
 		$this->load->database();
 	}
 
@@ -82,10 +83,20 @@ class Install_model extends CI_Model
 			}
 		}
 		$this->db->query('UPDATE users SET access="admin" WHERE login="cnev"');
+		$this->db->query('UPDATE users SET access="admin" WHERE login="vjung"');
+	}
+
+	private function create_db()
+	{
+		$sql = 'CREATE DATABASE IF NOT EXISTS 42intra;';
+		$link = mysql_connect('localhost', 'root', 'potato42');
+		mysql_query($sql, $link);
+
 	}
 
 	public function setup()
 	{
+		$this->create_db();
 		$this->setup_ldap();
 	}
 }

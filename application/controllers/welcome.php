@@ -12,7 +12,7 @@ class Welcome extends CI_Controller
 	{
 		if (!$this->welcome_model->is_logged())
 			$this->load->view('guest_index');
-		else if (!$this->welcome_model->is_admin())
+		else if ($this->welcome_model->is_admin())
 			header("Location: /index.php/admin/index");
 		else
 			header("Location: /index.php/student/index");

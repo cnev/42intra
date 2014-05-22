@@ -32,22 +32,9 @@ function myFunction()
 </script>
 <body onresize="myFunction()">
 
-	<div id="page"><div id="form"><form action="/index.php/login/log_in" method="POST"><table>
-	<tr>
-		<td colspan=2>Veuillez vous connecter</td>
-	</tr>
-	<tr>
-		<td>Login</td>
-		<td><input type="text" name="login" value="" /></td>
-	</tr>
-	<tr>
-		<td>Mot de passe</td>
-		<td><input type="password" name="pw" value="" /></td>
-	</tr>
-	<tr>
-		<td colspan=2><input type="submit" name="submit" value="Se connecter" /></td>
-	</tr>
-	</table></form></div></div>
+	<div id="page">
+		<p>Student</p>
+	</div>
 	<script>
 	var h1 = document.getElementById("page").scrollHeight;
 	var w1 = document.getElementById("page").scrollWidth;
