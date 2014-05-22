@@ -10,6 +10,8 @@ class Welcome extends CI_Controller
 	}
 	public function index()
 	{
+		session_destroy();
+		$_SESSION = array();
 		if (!$this->welcome_model->is_logged())
 			$this->load->view('guest_index');
 		else if ($this->welcome_model->is_admin())

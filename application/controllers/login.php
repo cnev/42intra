@@ -10,14 +10,14 @@ class Login extends CI_Controller
 
 	public function log_in()
 	{
-		if ($this->login_model->auth($_POST['login'], $_POST['pwd']))
+		if ($this->login_model->auth($_POST['login'], $_POST['pw']))
 		{
 			$_SESSION['login'] = $_POST['login'];
 			$_SESSION['access'] = $this->login_model->get_access();
 			if ($_SESSION['access'] == 'admin')
-				header("Location: /index.php/admin/index");                      
+				header("Location: /index.php/admin/index");
 			else
-				header("Location: /index.php/student/index"); 
+				header("Location: /index.php/student/index");
 		}
 		else
 		{
