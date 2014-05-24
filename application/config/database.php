@@ -45,13 +45,18 @@
 | the active record class
 */
 
+/* Include of the system-specific, user-specific file */
+/* Temporary here, remove later */
+include_once("user_config.php");
+
+
 $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
-$db['default']['password'] = 'secret';
-$db['default']['database'] = '42intra';
+$db['default']['password'] = $db_pw;
+$db['default']['database'] = $db_name;
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
