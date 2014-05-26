@@ -1,0 +1,44 @@
+>>>
+Generalites
+Fichier auteur oublie ? 0
+Rendu vide ? 0
+note#> 1
+0
+<<<
+>>>
+Norme
+Si le projet comporte une faute de norme, attribuez la note 0 au groupe puis continuez la correction.
+note#> 1
+0
+<<<
+>>>
+Triche
+printf ? -42
+scanf ? -42
+ft_ta_mere ? -84 PARCE QUE LA FETE DES MERES C'ETAIT HIER
+note#> 2
+0
+-42
+<<<
+>>>
+Raycasting
+Ca ressemble a quelque chose ? 20.
+Ca ressemble a rien ? -42 pour foutage_de_gueule
+note#> 2
+-42
+20
+<<<
+>>>
+Bonuses
+Vous avez fini votre Pyramide avant les Egyptiens ? +1
+Vous avez Industrialisation avant les Coreens ? +1
+Vous avez 20 cites-etats alliees dans une partie avec des Autrichiens ? +1
+Vous jouez avec vjung ? +1
+note#> 5
+0
+1
+2
+3
+4
+<<<
+

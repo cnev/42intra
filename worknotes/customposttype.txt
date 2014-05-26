@@ -1,0 +1,66 @@
+modeles-activites-baremes
+
+Voici comment est déﬁni un Module :
+- nom / description
+- restriction du nombre de place
+- date de début et de ﬁn d’inscription
+- date de début et de ﬁn du module
+- valeur du module en crédits
+- création automatique de la catégorie dans le forum à la création d’un nouveau module
+- à la ﬁn du module, les crédits sont attribués ou non (import via .csv) aux étudiants et
+un grade est donné
+
+Voici comment est déﬁni une Activité :
+- nom / description / sujet (.pdf)
+- restriction du nombre de place
+- date de début et de ﬁn d’inscription
+- date de début et de ﬁn de l’activité
+- inscription par groupe de taille variable
+- choix du nombre de pairs (peer correcting) pour les projets
+- génération automatique de groupe ou inscription manuelle
+- une activité doit forcément appartenir à un Module
+- un type (projet / examen ou TD)
+
+Voici comment est déﬁni un Barème :
+- on doit pouvoir selectionner une note en fonction des éléments décrits dans le barème
+- on doit pouvoir associé un barème à une activité de type projet
+
+CREATE TABLE IF NOT EXISTS module
+{
+	int id NOT NULL AUTO-INCREMENT,
+	varchar(255) nom NOT NULL,
+	text description NOT NULL,
+	int places NOT NULL,
+	datetime debut_inscription NOT NULL,
+	datetime fin_inscription NOT NULL,
+	datetime debut_inscription NOT NULL,
+	datetime fin_inscription NOT NULL,
+	int credits NOT NULL,
+	primary key (id)
+}
+
+CREATE TABLE IF NOT EXISTS activite
+{
+	int id NOT NULL AUTO-INCREMENT,
+	int id_module NOT NULL,
+	enum type NOT NULL,
+	varchar(255) nom NOT NULL,
+	text description NOT NULL,
+	varchar(4096) sujet,
+	int places NOT NULL,
+	datetime debut_inscription NOT NULL,
+	datetime fin_inscription NOT NULL,
+	datetime debut_inscription NOT NULL,
+	datetime fin_inscription NOT NULL,
+	int min_groupe NOT NULL,
+	int max_groupe NOT NULL,
+	int nb_pairs_correct NOT NULL,
+	int credits NOT NULL,
+	primary key (id)
+}
+
+Bareme:
+ex : correction du wolf3d
+fichier de bareme: bareme_(id_activite).txt
+cf bareme/bareme_wolf3d.txt
+
