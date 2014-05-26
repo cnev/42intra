@@ -1,4 +1,4 @@
-<html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -8,40 +8,54 @@
 	#page
 	{
 		position:relative;
+		height: 1000px;
+		width: 1000px;
+	}
+	#header
+	{
+		text-align: center;
+		height: 100px;
+		width: 1000px;
+	}
+	#main
+	{
+		position:relative;
 		height: 100%;
 		width: 100%;
 	}
-	#form
+	#nav
 	{
-		position:absolute;
+		position: absolute;
+		text-align: center;
 		top: 0;
 		left: 0;
+		height: 800px;
+		width: 200px;
+	}
+	#body
+	{
+		position: absolute;
+		text-align: center;
+		top: 0;
+		right: 0;
+		height: 800px;
+		width: 800px;
 	}
 	</style>
 </head>
-<script>
-function myFunction()
-{
-	var h1 = document.getElementById("page").scrollHeight;
-	var w1 = document.getElementById("page").scrollWidth;
-	var h2 = document.getElementById("form").scrollHeight;
-	var w2 = document.getElementById("form").scrollWidth;
-	document.getElementById("form").style.top = h1 / 2 - h2 / 2;
-	document.getElementById("form").style.left = w1 / 2 - w2 / 2;
-}
-</script>
-<body onresize="myFunction()">
-
+<body>
 	<div id="page">
-		<p>Admin</p>
+		<div id="header">
+			Admin
+		</div>
+		<div id="main">
+			<div id="nav">
+				Nav
+			</div>
+			<div id="body">
+				Body
+			</div>
+		</div>
 	</div>
-	<script>
-	var h1 = document.getElementById("page").scrollHeight;
-	var w1 = document.getElementById("page").scrollWidth;
-	var h2 = document.getElementById("form").scrollHeight;
-	var w2 = document.getElementById("form").scrollWidth;
-	document.getElementById("form").style.top = h1 / 2 - h2 / 2;
-	document.getElementById("form").style.left = w1 / 2 - w2 / 2;
-	</script>
 </body>
 </html>
