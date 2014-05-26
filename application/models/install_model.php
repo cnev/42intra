@@ -89,12 +89,55 @@ class Install_model extends CI_Model
 		$sql = 'CREATE DATABASE IF NOT EXISTS 42intra;';
 		$link = mysql_connect('localhost', 'root', 'potato42');
 		mysql_query($sql, $link);
+	}
 
+	private function setup_modules()
+	{
+		$this->db->query('DROP TABLE IF EXISTS modules');
+		$this->db->query('CREATE TABLE IF NOT EXISTS modules
+	(
+		id int NOT NULL AUTO_INCREMENT,
+		nom varchar(255) NOT NULL,
+		description text NOT NULL,
+		places int NOT NULL,
+		debut_inscription datetime NOT NULL,
+		fin_inscription datetime NOT NULL,
+		debut_module datetime NOT NULL,
+		fin_module datetime NOT NULL,
+		credits int NOT NULL,
+		primary key (id)
+	);');
+	}
+
+	private function setup_activites()
+	{
+		$this->db->query('DROP TABLE IF EXISTS activites');
+		$this->db->query('CREATE TABLE IF NOT EXISTS activites
+	(
+		id int NOT NULL AUTO_INCREMENT,
+		id_module int NOT NULL,
+		type enum("projet", "examen", "TD") NOT NULL,
+		nom varchar(255) NOT NULL,
+		description text NOT NULL,
+		sujet varchar(4096),
+		places int NOT NULL,
+		debut_inscription datetime NOT NULL,
+		fin_inscription datetime  NOT NULL,
+		debut_activite datetime NOT NULL,
+		fin_activite datetime NOT NULL,
+		min_groupe int NOT NULL,
+		max_groupe int NOT NULL,
+		nb_pairs_correct int NOT NULL,
+		credits int NOT NULL,
+		primary key (id)
+	);');
 	}
 
 	public function setup()
 	{
 		$this->create_db();
 		$this->setup_ldap();
+		$this->setup_modules();
+		$this->setup_activites();
 	}
 }
