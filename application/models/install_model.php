@@ -81,13 +81,14 @@ class Install_model extends CI_Model
 			}
 		}
 		$this->db->query('UPDATE users SET access="admin" WHERE login="cnev"');
-		$this->db->query('UPDATE users SET access="admin" WHERE login="vjung"');
+		//$this->db->query('UPDATE users SET access="admin" WHERE login="vjung"');
 	}
 
 	private function create_db()
 	{
+		include("application/config/user_config.php");
 		$sql = 'CREATE DATABASE IF NOT EXISTS 42intra;';
-		$link = mysql_connect('localhost', 'root', 'potato42');
+		$link = mysql_connect('localhost', 'root', $db_pw);
 		mysql_query($sql, $link);
 	}
 
@@ -115,7 +116,6 @@ class Install_model extends CI_Model
 		$this->db->query('CREATE TABLE IF NOT EXISTS activites
 	(
 		id int NOT NULL AUTO_INCREMENT,
-		id_module int NOT NULL,
 		type enum("projet", "examen", "TD") NOT NULL,
 		nom varchar(255) NOT NULL,
 		description text NOT NULL,
@@ -133,11 +133,26 @@ class Install_model extends CI_Model
 	);');
 	}
 
+	private function add_demo_modules()
+	{
+		$sql = 'INSERT INTO `42intra`.`modules` (`id`, `nom`, `description`, `places`, `debut_inscription`
+			, `fin_inscription`, `debut_module`, `fin_module`, `credits`)
+		VALUES (NULL, "Infographie 1", "BLA BLA BLA WOLF3d BLABLABLA", "42", CURRENT_DATE()
+			, CURRENT_DATE(), CURRENT_DATE(), CURRENT_DATE(), "42");';
+		$this->db->query($sql);
+		$sql = 'INSERT INTO `42intra`.`modules` (`id`, `nom`, `description`, `places`, `debut_inscription`
+			, `fin_inscription`, `debut_module`, `fin_module`, `credits`)
+		VALUES (NULL, "Algorithmie 1", "BLA BLA BLA LEM-OUT BLABLABLA", "42", CURRENT_DATE()
+			, CURRENT_DATE(), CURRENT_DATE(), CURRENT_DATE(), "42");';
+		$this->db->query($sql);
+	}
+
 	public function setup()
 	{
 		$this->create_db();
 		$this->setup_ldap();
 		$this->setup_modules();
 		$this->setup_activites();
+		$this->add_demo_modules();
 	}
 }

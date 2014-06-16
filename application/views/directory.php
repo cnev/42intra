@@ -1,1 +1,1 @@
-<?php echo $directory ?>
+<?php echo $directory?>

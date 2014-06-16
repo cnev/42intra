@@ -47,7 +47,7 @@
 
 /* Include of the system-specific, user-specific file */
 /* Temporary here, remove later */
-include_once("user_config.php");
+include("user_config.php");
 
 
 $active_group = 'default';
