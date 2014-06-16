@@ -15,5 +15,12 @@ class Module_model extends CI_Model
 		return (TRUE);
 	}
 
+	public function generate_form()
+	{
+		$str = '<div id="form"><form action="" method="POST">';
+		$str = '<div id="nom">' . '</div>';
+		$str = '</div>';
+		return($str);
+	}
 
 }

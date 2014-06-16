@@ -12,4 +12,15 @@ class Module extends CI_Controller
 		$data['title'] = 'Born To Feed';
 		$this->load->view('student_index', $data);
 	}
+
+	public function create()
+	{
+		$data['form'] = $this->module_model->generate_form();
+		$this->load->view('module_form', $data);
+	}
+
+	public function view()
+	{
+
+	}
 }
